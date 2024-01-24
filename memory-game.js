@@ -3,6 +3,7 @@
 /** Memory game: find matching pairs of cards and flip both of them. */
 
 const FOUND_MATCH_WAIT_MSECS = 1000;
+let clickedCards = [];
 const COLORS = [
   "red", "blue", "green", "orange", "purple",
   "red", "blue", "green", "orange", "purple",
@@ -35,36 +36,68 @@ function shuffle(items) {
  *
  * Each div DOM element will have:
  * - a class with the value of the color
+ * -want to keep track of the individual card --use id with index
+ * -also set whether the card is flipped or not
  * - a click event listener for each card to handleCardClick
  */
 
 function createCards(colors) {
+
   const gameBoard = document.getElementById("game");
-  //iterate through shuffledColors arr and create div for each card(ele)
-  for (let color of colors) {
+  for (let i = 0; i < colors.length; i++) {
     const div = document.createElement('div');
-    div.classList.add(color);
+    div.classList.add(colors[i]);
+    div.setAttribute('id', i);
     gameBoard.append(div);
-    div.addEventListener('click', flipCard);
+    div.addEventListener('click', handleCardClick);
   }
 }
 
 /** Flip a card face-up. */
 
 function flipCard(card) {
-  const cardDiv = card.target;
-  const color = cardDiv.getAttribute('class');
-  cardDiv.style.backgroundColor = color;
+  const color = card.getAttribute('class');
+  card.style.backgroundColor = color;
 }
 
 /** Flip a card face-down. */
 
-function unFlipCard(card) {
-  // ... you need to write this ...
+function unFlipCard(cards) {
+  cards.map(card => card.style.backgroundColor = 'white');
+  clickedCards = [];
 }
 
 /** Handle clicking on a card: this could be first-card or second-card. */
 
 function handleCardClick(evt) {
-  // ... you need to write this ...
+  const card = evt.target;
+  const cardColor = evt.target.getAttribute('class');
+  const cardId = evt.target.getAttribute('id');
+  if (clickedCards.find(card => card.getAttribute('id') === cardId)) {
+    return;
+  } else {
+    clickedCards.push(card);
+    flipCard(card);
+    if (clickedCards.length === 2) {
+      checkForMatch(clickedCards);
+    }
+  }
 }
+
+
+function checkForMatch(cards) {
+  if (cards[0].getAttribute('class') !== cards[1].getAttribute('class')) {
+    setTimeout(() => {
+      unFlipCard(cards);
+    }, 1000);
+  } else {
+    cards.map(card => card.removeEventListener('click', handleCardClick));
+    clickedCards = [];
+  }
+
+}
+/*
+check if colors are same
+  not - flip them back over to blank and clear clickedCardsArray
+  yes - keep flipped with color but dont make them accessible anymore and clear the array
+*/
