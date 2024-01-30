@@ -3,7 +3,10 @@
 /** Memory game: find matching pairs of cards and flip both of them. */
 const resetBtn = document.getElementById('reset-game');
 const gameBoard = document.getElementById("game");
-const FOUND_MATCH_WAIT_MSECS = 1000;
+let score = document.getElementById('score');
+let bestScore = document.getElementById('best-score');
+score.innerText = 0;
+bestScore.innerText = 0;
 let clickedCards = [];
 let pauseClick = false;
 
@@ -130,15 +133,17 @@ function checkForMatch(cards) {
   if (largerIndex - cardImgs.length / 2 !== smallerIndex) {
     setTimeout(() => {
       unFlipCard(cards);
-    }, FOUND_MATCH_WAIT_MSECS);
+    }, 1000);
   } else {
     setTimeout(() => {
       cards.map(card => card.removeEventListener('click', handleCardClick));
       clickedCards = [];
       pauseClick = false;
-    }, 1000);
+    }, 800);
 
   }
+  score.innerText = Number(score.innerText);
+  score.innerText++;
 
 }
 
