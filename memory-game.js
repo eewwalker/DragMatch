@@ -4,11 +4,13 @@
 const resetBtn = document.getElementById('reset-game');
 const gameBoard = document.getElementById("game");
 let score = document.getElementById('score');
-let bestScore = document.getElementById('best-score');
 score.innerText = 0;
-bestScore.innerText = 0;
+let bestScore = document.getElementById('best-score');
+bestScore.innerText = localStorage.getItem('highScore') ?? 0;
+
 let clickedCards = [];
 let pauseClick = false;
+let matchCount = 0;
 
 const cardImgs = [
   { srcImg: "https://www.usmagazine.com/wp-content/uploads/2023/10/%E2%80%98RuPauls-Drag-Race-Is-Just-the-Beginning-for-Sasha-Colby-Im-%E2%80%98Pretty-Much-in-My-Mogul-Era1.jpg?crop=0px%2C0px%2C1509px%2C853px&resize=1200%2C675&quality=86&strip=all", id: 0, alt: 'Sasha Colby' },
@@ -135,16 +137,35 @@ function checkForMatch(cards) {
       unFlipCard(cards);
     }, 1000);
   } else {
+    matchCount++;
     setTimeout(() => {
       cards.map(card => card.removeEventListener('click', handleCardClick));
       clickedCards = [];
       pauseClick = false;
-    }, 800);
-
+      if (matchCount === 15) {
+        updateStorage();
+        alert("YOU'VE MATCHED THEM ALL!");
+      }
+    }, 600);
   }
   score.innerText = Number(score.innerText);
   score.innerText++;
 
+}
+function updateStorage() {
+  console.log('made it here ');
+  const prevScore = localStorage.getItem('highScore');
+  console.log(prevScore);
+  if (prevScore === null) {
+    console.log(prevScore);
+    localStorage.setItem('highScore', score.innerText);
+    bestScore.innerText = localStorage.getItem('highScore');
+  }
+  if (Number(score.innerText) < Number(prevScore)) {
+    console.log(score.innerHTML, prevScore);
+    localStorage.setItem('highScore', score.innerText);
+    bestScore.innerText = localStorage.getItem('highScore');
+  }
 }
 
 gameBoard.addEventListener('click', handleCardClick);
