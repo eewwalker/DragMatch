@@ -19,7 +19,7 @@ body{
   justify-content: space-around;
   flex-wrap: wrap;
   align-items: center;
-  margin: 8rem 3rem 2rem;
+  margin: 2rem 3rem 2rem;
 }
 .title-container{
   display: flex;
@@ -72,8 +72,8 @@ button {
  justify-content: center;
 }
 .queen-container {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   cursor: pointer;
   border-radius: 2rem;
   position: relative;
