@@ -13,17 +13,23 @@
 </head>
 
 <body>
-  <header class="header-titles">
-    <h1>DRAG MATCH</h1>
-    <p id="score"></p>
-    <p id="best-score"></p>
+  <header class="header-container">
+    <div class="title-container">
+      <h1>DRAG MATCH</h1>
+      <p class="title-info">Matching game with Drag Race Winners</p>
+    </div>
+    <div class="score-container">
+      <p>Score</p>
+      <div id="score"></div>
+    </div>
+    <div class="score-container">
+      <p>Best Score</p>
+      <div id="best-score"></div>
+    </div>
+
     <button id="reset-game">Reset Game</button>
   </header>
-  <header class="header-labels">
-    <p>Matching game with Drag Race Winners</p>
-    <p>Score</p>
-    <p>Best Score</p>
-  </header>
+
   <div id="game"></div>
   <script src="memory-game.js"></script>
 
