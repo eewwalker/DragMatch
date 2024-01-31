@@ -8,7 +8,9 @@
   background-color: #a6e760;
   color: #fff;
 }
-
+body{
+  height: 100vh;
+}
 
 /* HEADER SECTION */
 
@@ -17,7 +19,7 @@
   justify-content: space-around;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: 8rem;
+  margin: 8rem 3rem 2rem;
 }
 .title-container{
   display: flex;
@@ -64,8 +66,9 @@ button {
  display: grid;
  grid-template-columns: repeat(6, 1fr);
  gap: 1rem;
- max-width: 800px;
-  margin: 4rem auto;
+ width: 800px;
+ margin: auto;
+ height: auto;
  justify-content: center;
 }
 .queen-container {
