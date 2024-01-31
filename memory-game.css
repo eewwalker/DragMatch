@@ -32,10 +32,14 @@ h1{
 .title-info{
   font-size: 2.7rem;
 }
+.scores {
+  display: flex;
+}
 .score-container{
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 1rem;
 }
 .score-container p{
   font-size: 2.9rem;
@@ -52,9 +56,15 @@ h1{
 button {
   font-size: 3rem;
   border-radius: 5rem;
-  padding: 2rem;
+  padding: 1.5rem;
   border: .7rem solid #fff;
   cursor: pointer;
+  margin-top: 1rem;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 

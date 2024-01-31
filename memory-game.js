@@ -1,7 +1,8 @@
 "use strict";
 
 /** Memory game: find matching pairs of cards and flip both of them. */
-const resetBtn = document.getElementById('reset-game');
+const newGame = document.getElementById('reset-game');
+const resetScores = document.getElementById('reset-scores');
 const gameBoard = document.getElementById("game");
 let score = document.getElementById('score');
 score.innerText = 0;
@@ -153,22 +154,23 @@ function checkForMatch(cards) {
 
 }
 function updateStorage() {
-  console.log('made it here ');
   const prevScore = localStorage.getItem('highScore');
-  console.log(prevScore);
   if (prevScore === null) {
-    console.log(prevScore);
     localStorage.setItem('highScore', score.innerText);
     bestScore.innerText = localStorage.getItem('highScore');
   }
   if (Number(score.innerText) < Number(prevScore)) {
-    console.log(score.innerHTML, prevScore);
     localStorage.setItem('highScore', score.innerText);
     bestScore.innerText = localStorage.getItem('highScore');
+
   }
 }
 
 gameBoard.addEventListener('click', handleCardClick);
-resetBtn.addEventListener('click', () => {
+newGame.addEventListener('click', () => {
   location.reload();
+});
+resetScores.addEventListener('click', () => {
+  location.reload();
+  localStorage.removeItem('highScore');
 });
