@@ -88,6 +88,7 @@ button {
   border-radius: 2rem;
   position: relative;
   border: 2px solid #f5f1fe;
+  overflow: hidden;
 }
 img, .front {
   width: 100%;
