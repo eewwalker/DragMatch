@@ -5,8 +5,8 @@
   box-sizing: border-box;
   font-size: 62.5%;
   font-family:'Montserrat', sans-serif;
-  background-color: #a6e760;
-  color: #fff;
+  background-color: #7381ef;
+  color: #fffbee;
 }
 body{
   height: 100vh;
@@ -47,17 +47,17 @@ h1{
 }
 #score, #best-score{
   font-size: 8rem;
-  border: 0.5rem solid #fff;
+  border: 0.5rem solid #fffbee;
   padding: 1rem 7rem;
   border-radius: 4rem;
   color: #FFB85C;
-  background: #fff;
+  background: #fffbee;
 }
 button {
   font-size: 3rem;
   border-radius: 5rem;
   padding: 1.5rem;
-  border: .7rem solid #fff;
+  border: .7rem solid #fffbee;
   cursor: pointer;
   margin-top: 1rem;
 }
@@ -87,7 +87,7 @@ button {
   cursor: pointer;
   border-radius: 2rem;
   position: relative;
-  border: 2px solid #f5f1fe;
+  border: 2px solid #fffbee;
   overflow: hidden;
 }
 img, .front {
